@@ -1,0 +1,24 @@
+# 🛠️ Developer Cheat Sheet - Axel
+
+## 1. Git (El flujo seguro)
+- **Ver cambios:** `git status` (Siempre haz esto antes de hacer nada).
+- **Guardar cambios:** `git add .` -> `git commit -m "Descripción clara"`
+- **Subir:** `git push origin nombre-de-tu-rama`
+- **Traer lo nuevo:** `git pull origin main`
+- **Crear rama nueva:** `git checkout -b nombre-tarea`
+
+## 2. SQL (Lógica de datos)
+- **Seleccionar:** `SELECT campos FROM tabla WHERE condicion;`
+- **Actualizar:** `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!)
+- **Unir tablas:** `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;`
+
+## 3. HTTP / API (El puente)
+- **GET:** Traer información.
+- **POST:** Crear algo nuevo.
+- **PUT/PATCH:** Actualizar algo que ya existe.
+- **JSON Structure:**
+```json
+  {
+    "campo": "valor",
+    "numero": 123
+  }
