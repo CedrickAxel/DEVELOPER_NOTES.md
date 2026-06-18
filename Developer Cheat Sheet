@@ -12,6 +12,12 @@
 - `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!) - Para actualizar datos de una tabla o campo.
 - `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;` - Para unir tablas con un campo en común.
 
+# SQL Pro Tips
+- `JOIN:` - Conecta tablas (el puente).
+- `GROUP BY:` - Junta todas las ventas del mismo cliente en un solo bulto.
+- `SUM():` - Suma los valores de ese bulto.
+- `HAVING:` - Filtra los resultados después de haber sumado (es el 'WHERE' de los grupos).
+
 # 3. Protocolos HTTP / API (El puente)
 - `GET:` - Traer información.
 - `POST:` - Crear algo nuevo.
