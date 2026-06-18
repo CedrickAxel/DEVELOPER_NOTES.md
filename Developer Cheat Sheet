@@ -6,11 +6,25 @@
 - `git push origin nombre-de-tu-rama` - Para subir al main (producción).
 - `git pull origin main` - Para traer lo nuevo.
 - `git checkout -b nombre-tarea` - Para crear una rama nueva.
+- `git log` - Para ver el historial del proyecto, filtrarlo y buscar cambios concretos.
 
 # 2. SQL (Lógica de datos)
+- `INSERT INTO:` - Agrega nuevos registros a una tabla.
 - `SELECT campos FROM tabla WHERE condicion;` - Para visualizar datos concretos de una tabla o campo.
 - `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!) - Para actualizar datos de una tabla o campo.
 - `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;` - Para unir tablas con un campo en común.
+- `DELETE:` - Elimina registros específicos.
+
+# Definición de Estructuras (DDL)
+- `CREATE TABLE:` Crea una tabla nueva.
+- `ALTER TABLE:` Modifica la estructura de una tabla existente (añadir columnas, cambiar tipos de datos).
+- `DROP TABLE:` Elimina por completo una tabla y sus datos.
+
+# Control de Acceso y Transacciones (DCL / TCL)
+- `COMMIT:` Guarda de forma permanente los cambios realizados.
+- `ROLLBACK:` Deshace los cambios realizados antes de un COMMIT en caso de error.
+- `GRANT:` Otorga permisos a un usuario.
+- `REVOKE:` Retira permisos a un usuario.
 
 # SQL Pro Tips
 - `JOIN:` - Conecta tablas (el puente).
@@ -47,3 +61,97 @@ JSON Structure:
 - Error 400 (Bad Request): El JSON está mal estructurado o falta un campo requerido.
 - Error 401/403: El token de autenticación expiró o no tengo permisos.
 - Error 500: El Service Layer de SAP falló internamente (Revisar logs de SAP).
+
+Una petición HTTP (o request) es un mensaje estructurado que un cliente (como un navegador web o una aplicación móvil) 
+envía a un servidor para solicitar un recurso o realizar una acción. Es la base de la comunicación en Internet y el pilar 
+de la arquitectura web.
+
+GET: Solicita datos o información de un servidor (ej. cargar una página web).
+POST: Envía datos nuevos al servidor (ej. rellenar y enviar un formulario).
+PUT: Actualiza o modifica un recurso existente en su totalidad.
+DELETE: Elimina un recurso específico del servidor.
+PATCH: Realiza una actualización parcial de un recurso.
+
+200 (OK): La petición se realizó con éxito.
+201 (Created): El recurso se creó correctamente (típico en POST).
+400 (Bad Request): La petición tiene un formato incorrecto.
+401 (Unauthorized): Falta autenticación o es inválida.
+404 (Not Found): El recurso solicitado no existe.
+500 (Internal Server Error): Ocurrió un fallo en el servidor.
+
+Para cambiar rápidamente entre entornos en Postman, se crean entornos separados (como "Pruebas" y "Producción") que contienen 
+las mismas variables pero con distintos valores. Al cambiar de entorno en el menú desplegable, las peticiones se actualizan 
+automáticamente sin necesidad de modificar las URLs o parámetros manualmente.
+
+1.Crea tus Entornos:
+En Postman, dirígete a la sección "Environments" en el panel lateral izquierdo y haz clic en "+" (Crear entorno).Nómbralo, 
+por ejemplo, API - Pruebas.Crea una variable llamada base_url y asígnale el valor de tu servidor de pruebas 
+(ej. https://midominio.com).Repite el proceso para crear otro entorno llamado API - Producción y pon la URL de producción 
+(ej. https://midominio.com).
+
+2.Utiliza la variable en tus peticiones:
+En la barra de direcciones de tus peticiones, reemplaza la URL fija por la variable usando llaves dobles: 
+{{base_url}}/usuarios.Esto también aplica para Headers, Bodies o Auth tokens.
+
+3.Alterna entre entornos:
+En la esquina superior derecha de Postman, despliega el menú de entornos y simplemente selecciona el que deseas usar.La variable 
+{{base_url}} tomará automáticamente el valor del entorno seleccionado.
+
+# 👑Todos los comandos de Git:👑
+Configuración e Inicialización
+git init: Crea un nuevo repositorio Git en tu carpeta actual.
+git clone: Descarga una copia completa de un repositorio existente desde un servidor remoto.
+git config: Configura variables globales o locales, como tu nombre o correo electrónico.
+
+Ciclo de Vida Diario (Trabajo Local)
+git status: Muestra el estado actual de tus archivos (modificados, preparados, etc.).
+git add: Prepara y añade archivos al área de preparación (staging area) para el siguiente guardado.
+git commit: Guarda de forma permanente los cambios preparados en el historial del repositorio.
+git diff: Muestra las diferencias exactas en las líneas de código que han cambiado y aún no guardas.
+git log: Muestra el historial de todas las confirmaciones (commits) realizadas.
+
+Ramas (Branches)
+git branch: Lista, crea o elimina ramas en tu proyecto.
+git checkout (o git switch): Te permite cambiar entre distintas ramas o restaurar versiones de archivos.
+git merge: Une o fusiona los cambios de otra rama en tu rama actual.
+
+Sincronización (Repositorios Remotos)
+git pull: Descarga los cambios más recientes del repositorio remoto y los actualiza en tu entorno local.
+git push: Sube tus confirmaciones (commits) locales hacia el repositorio remoto (ej. GitHub o GitLab).
+git remote: Administra las conexiones con servidores externos (repositorios remotos).
+
+Deshacer y Corregir
+git reset: Deshace cambios moviendo el puntero de tu rama a un estado anterior.
+git revert: Crea un nuevo commit diseñado específicamente para deshacer los cambios de un commit anterior, ideal si ya compartiste tu historial.
+git stash: Guarda temporalmente los cambios en los que estás trabajando para que puedas cambiar de rama sin cometerlos, y luego recuperarlos.
+
+Un conflicto de git pull ocurre cuando los cambios en tu repositorio local chocan con los cambios subidos al servidor remoto.
+Para solucionarlo: identifica los archivos marcados por Git, ábrelos para decidir qué código conservar (borrando las marcas de Git), 
+añade los cambios corregidos y crea un nuevo commit.
+
+$filter, $select y $top para no saturar la memoria del servidor SAP.
+
+a sintaxis de HANA (como el uso de comillas dobles, Case Sensitivity y funciones específicas como IFNULL
+
+C# con la biblioteca de Excel interop o Python con pandas / openpyxl consumiendo la API
+
+el flujo de Git (branches, pull requests) y sabes resolver conflictos línea por línea.
+
+Un proceso lógico: cola de impresión, drivers instalados, puerto de conexión (USB/Red) o la configuración del servicio del POS.
+
+En producción, las APIs fallan. Menciona siempre que en tus desarrollos incluyes manejo de errores (try-catch), registros de logs 
+para auditoría y reintentos automáticos.
+
+Explicar que siempre cierras la sesión (/Logout). El Service Layer tiene un límite de licencias y sesiones activas; no cerrarlas 
+puede saturar el servidor y tirar las integraciones de la empresa.
+
+El uso de session.verify = False se explica porque los servidores locales de SAP HANA/SQL suelen usar certificados de seguridad 
+locales sin firmar por una entidad pública.
+
+JSON significa JavaScript Object Notation (Notación de Objetos de JavaScript). Es un formato de texto ligero, estructurado y 
+fácil de leer tanto para humanos como para máquinas, utilizado principalmente para almacenar e intercambiar datos entre diferentes 
+sistemas informáticos.
+
+DI API (Data Interface API) de SAP Business One es una herramienta de software que permite a los desarrolladores conectar sistemas 
+externos, crear add-ons y automatizar procesos empresariales. Actúa como un puente directo con la lógica de negocio, validaciones y 
+bases de datos del ERP.
