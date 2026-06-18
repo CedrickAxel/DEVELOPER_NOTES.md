@@ -2,20 +2,22 @@
 
 # 1. Git (git commands)
 - `git status` - Para ver cambios (Siempre haz esto antes de hacer nada).
-- `git add .` -> `git commit -m "Descripción clara"` - Para guardar cambios
-- `git push origin nombre-de-tu-rama` - Para subir al main (producción)
-- `git pull origin main` - Para traer lo nuevo
-- `git checkout -b nombre-tarea` - Para crear una rama nueva
+- `git add .` -> `git commit -m "Descripción clara"` - Para guardar cambios.
+- `git push origin nombre-de-tu-rama` - Para subir al main (producción).
+- `git pull origin main` - Para traer lo nuevo.
+- `git checkout -b nombre-tarea` - Para crear una rama nueva.
 
 # 2. SQL (Lógica de datos)
-- `SELECT campos FROM tabla WHERE condicion;` - Para visualizar datos concretos de una tabla o campo
-- `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!) - Para actualizar datos de una tabla o campo
-- `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;` - Para unir tablas con un campo en común
+- `SELECT campos FROM tabla WHERE condicion;` - Para visualizar datos concretos de una tabla o campo.
+- `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!) - Para actualizar datos de una tabla o campo.
+- `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;` - Para unir tablas con un campo en común.
 
 # 3. Protocolos HTTP / API (El puente)
 - `GET:` - Traer información.
 - `POST:` - Crear algo nuevo.
 - `PUT/PATCH:` - Actualizar algo que ya existe.
+
+
   
 JSON Structure:
 
@@ -24,3 +26,18 @@ JSON Structure:
     "campo": "valor",
     "numero": 123
   }
+
+
+
+# Protocolo de Resolución de Problemas (Axel)
+
+# 1. El Análisis de la "Causa Raíz" (No arregles síntomas, arregla el flujo)
+- Paso 1: Aislar. ¿El error está en el origen (Odoo), en el transporte (API/Service Layer) o en el destino (SAP)?
+- Paso 2: Validar API. Usar Postman para hacer un 'GET' a SAP. ¿Responde el servidor?
+- Paso 3: Validar Logs. Revisar logs de Odoo/SAP para ver mensajes de error.
+- Paso 4: Mapeo. Verificar si el campo 'dirección' en Odoo tiene el nombre técnico correcto que espera SAP.
+
+# 2. Acciones Técnicas
+- Error 400 (Bad Request): El JSON está mal estructurado o falta un campo requerido.
+- Error 401/403: El token de autenticación expiró o no tengo permisos.
+- Error 500: El Service Layer de SAP falló internamente (Revisar logs de SAP).
