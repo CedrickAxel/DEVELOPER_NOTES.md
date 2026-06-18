@@ -1,23 +1,25 @@
-# 🛠️ Developer Cheat Sheet - Axel
+# 👑 Developer Cheat Sheet - Axel👑
 
-## 1. Git (El flujo seguro)
-- **Ver cambios:** `git status` (Siempre haz esto antes de hacer nada).
-- **Guardar cambios:** `git add .` -> `git commit -m "Descripción clara"`
-- **Subir:** `git push origin nombre-de-tu-rama`
-- **Traer lo nuevo:** `git pull origin main`
-- **Crear rama nueva:** `git checkout -b nombre-tarea`
+# 1. Git (git commands)
+- `git status` - Para ver cambios (Siempre haz esto antes de hacer nada).
+- `git add .` -> `git commit -m "Descripción clara"` - Para guardar cambios
+- `git push origin nombre-de-tu-rama` - Para subir al main (producción)
+- `git pull origin main` - Para traer lo nuevo
+- `git checkout -b nombre-tarea` - Para crear una rama nueva
 
-## 2. SQL (Lógica de datos)
-- **Seleccionar:** `SELECT campos FROM tabla WHERE condicion;`
-- **Actualizar:** `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!)
-- **Unir tablas:** `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;`
+# 2. SQL (Lógica de datos)
+- `SELECT campos FROM tabla WHERE condicion;` - Para visualizar datos concretos de una tabla o campo
+- `UPDATE tabla SET campo = 'nuevo_valor' WHERE condicion;` (¡CUIDADO: Siempre usa WHERE!) - Para actualizar datos de una tabla o campo
+- `SELECT * FROM A INNER JOIN B ON A.id = B.a_id;` - Para unir tablas con un campo en común
 
-## 3. HTTP / API (El puente)
-- **GET:** Traer información.
-- **POST:** Crear algo nuevo.
-- **PUT/PATCH:** Actualizar algo que ya existe.
-- **JSON Structure:**
-```json
+# 3. Protocolos HTTP / API (El puente)
+- `GET:` - Traer información.
+- `POST:` - Crear algo nuevo.
+- `PUT/PATCH:` - Actualizar algo que ya existe.
+  
+JSON Structure:
+
+  json
   {
     "campo": "valor",
     "numero": 123
